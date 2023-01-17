@@ -6,15 +6,23 @@ import { registerUser } from '../utils/auth'; // Update with path to registerUse
 import GalleryLogo from './GalleryLogo';
 
 function RegisterForm({ user, updateUser }) {
+  const [firstName, lastName] = user.fbUser.displayName.split(' ');
+  const date = new Date().toISOString().slice(0, 10);
+
   const [formData, setFormData] = useState({
+    firstName,
+    lastName,
     username: '',
-    profile_image_url: '',
+    profileImageUrl: '',
+    createdOn: date,
     uid: user.uid,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     registerUser(formData).then(() => updateUser(user.uid));
+    console.warn('formData', formData);
+    console.warn('user', user);
   };
 
   return (
@@ -28,7 +36,7 @@ function RegisterForm({ user, updateUser }) {
           <Form.Text className="text-muted">***Username MUST be different from your first and last name</Form.Text>
           <div />
           <Form.Label className="text">Profile Image</Form.Label>
-          <Form.Control name="profile_image_url" required placeholder="Image URL" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
+          <Form.Control name="profileImageUrl" required placeholder="Image URL" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
         </Form.Group>
         <Button variant="dark" type="submit">
           Register for Account
@@ -41,6 +49,9 @@ function RegisterForm({ user, updateUser }) {
 RegisterForm.propTypes = {
   user: PropTypes.shape({
     uid: PropTypes.string.isRequired,
+    fbUser: PropTypes.shape({
+      displayName: PropTypes.string,
+    }).isRequired,
   }).isRequired,
   updateUser: PropTypes.func.isRequired,
 };
