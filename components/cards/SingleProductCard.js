@@ -1,26 +1,30 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from 'react-bootstrap/Image';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 function SingleProductCard({ paintingObj }) {
   return (
-    <>
-      <section>
-        <Image src={paintingObj.imageUrl} alt="Painting for sale" width="400" height="400" />
+    <div className="single-product-container">
+      <section className="single-product-image">
+        <Image src={paintingObj.imageUrl} alt="Painting for sale" width="450" height="500" />
       </section>
-      <section>
+      <section className="single-product-details">
         <h4>{paintingObj.title}</h4>
-        <h5>{paintingObj.seller.first_name} {paintingObj.seller.last_name}</h5>
+        <h5>{paintingObj.seller?.first_name} {paintingObj.seller?.last_name}</h5>
+        <h4>${paintingObj.price}</h4>
+        <Button variant="outline-success">Add to Cart</Button>
       </section>
-      <section>
+      <section className="single-product-description">
         <p>{paintingObj.description}</p>
       </section>
-    </>
+    </div>
   );
 }
 
 SingleProductCard.propTypes = {
   paintingObj: PropTypes.shape({
+    id: PropTypes.number,
     title: PropTypes.string,
     description: PropTypes.string,
     imageUrl: PropTypes.string,

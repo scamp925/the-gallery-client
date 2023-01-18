@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import SingleProductCard from '../../components/cards/SingleProductCard';
+import GalleryLogo from '../../components/GalleryLogo';
+import NavBar from '../../components/NavBar';
 import { getSingleProduct } from '../../utils/data/productData';
 
 export default function SinglePainting() {
@@ -18,6 +20,8 @@ export default function SinglePainting() {
 
   return (
     <div>
+      <NavBar />
+      <GalleryLogo />
       <SingleProductCard paintingObj={painting} />
     </div>
   );
