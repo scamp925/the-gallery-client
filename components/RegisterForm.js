@@ -23,8 +23,6 @@ function RegisterForm({ user, updateUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     registerUser(formData).then(() => updateUser(user.uid));
-    console.warn('formData', formData);
-    console.warn('user', user);
   };
 
   return (
