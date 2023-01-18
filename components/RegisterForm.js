@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useRouter } from 'next/router';
 import { registerUser } from '../utils/auth'; // Update with path to registerUser
 import GalleryLogo from './GalleryLogo';
 
 function RegisterForm({ user, updateUser }) {
   const [firstName, lastName] = user.fbUser.displayName.split(' ');
   const date = new Date().toISOString().slice(0, 10);
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     firstName,
@@ -38,6 +40,9 @@ function RegisterForm({ user, updateUser }) {
           <Form.Label className="text">Profile Image</Form.Label>
           <Form.Control name="profileImageUrl" required placeholder="Image URL" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
         </Form.Group>
+        <Button variant="danger" onClick={() => router.push('/')}>
+          Cancel
+        </Button>
         <Button variant="dark" type="submit">
           Register for Account
         </Button>
