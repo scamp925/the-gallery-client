@@ -7,7 +7,7 @@ function ProductCards({ paintingObj }) {
   return (
     <div>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={paintingObj.imageUrl} />
+        <Card.Img variant="top" src={paintingObj.image_url} />
         <Card.Body>
           <Card.Title>{paintingObj.title}</Card.Title>
           <Card.Subtitle>artist</Card.Subtitle>
@@ -21,7 +21,7 @@ function ProductCards({ paintingObj }) {
 
 ProductCards.propTypes = {
   paintingObj: PropTypes.shape({
-    imageUrl: PropTypes.string,
+    image_url: PropTypes.string,
     title: PropTypes.string,
     seller: PropTypes.shape({
       firstName: PropTypes.string,
