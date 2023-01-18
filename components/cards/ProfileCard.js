@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { Card, Image } from 'react-bootstrap';
 
 function ProfileCard({ userProfileObj }) {
@@ -12,6 +13,7 @@ function ProfileCard({ userProfileObj }) {
           <Card.Text>
             Username: {userProfileObj.username}
           </Card.Text>
+          <Link passHref href="/orderHistory">My Order History</Link>
         </Card.Body>
       </Card>
     </div>
