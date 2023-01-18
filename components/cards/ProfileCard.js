@@ -1,21 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Card, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 
 function ProfileCard({ userProfileObj }) {
   return (
     <div>
-      <Card className="profile-card">
-        <Image className="profile-card-image" src={userProfileObj.profileImageUrl} alt="Profile Avatar" />
-        <Card.Body className="profile-card-info">
-          <Card.Title>{userProfileObj.firstName} {userProfileObj.lastName}</Card.Title>
-          <Card.Text>
-            Username: {userProfileObj.username}
-          </Card.Text>
-          <Link passHref href="/orderHistory">My Order History</Link>
-        </Card.Body>
-      </Card>
+      <Image className="profile-card-image" src={userProfileObj.profileImageUrl} alt="Profile Avatar" width="300" height="300" />
+      <h3>{userProfileObj.firstName} {userProfileObj.lastName}</h3>
+      <p>Username: {userProfileObj.username}</p>
+      <Link passHref href="/orderHistory">My Order History</Link>
     </div>
   );
 }
