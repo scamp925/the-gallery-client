@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image';
-import PaintingCards from '../components/cards/PaintingCards';
+import ProductCards from '../components/cards/ProductCards';
 import GalleryLogo from '../components/GalleryLogo';
 import NavBar from '../components/NavBar';
 
@@ -14,7 +14,7 @@ function Home() {
       </section>
       <div>
         <h3>What's selling?</h3>
-        <PaintingCards />
+        <ProductCards />
       </div>
     </>
   );
