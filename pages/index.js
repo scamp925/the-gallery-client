@@ -1,10 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import ProductCards from '../components/cards/ProductCards';
 import GalleryLogo from '../components/GalleryLogo';
 import NavBar from '../components/NavBar';
+import { getAllProducts } from '../utils/data/productData';
 
 function Home() {
+  const [paintings, setPaintings] = useState([]);
+
+  const getAllPaintings = () => {
+    getAllProducts().then(setPaintings);
+  };
+
+  useEffect(() => {
+    getAllPaintings();
+  }, []);
+
   return (
     <>
       <NavBar />
@@ -14,7 +26,9 @@ function Home() {
       </section>
       <div>
         <h3>What's selling?</h3>
-        <ProductCards />
+        {paintings?.map((painting) => (
+          <ProductCards key={painting.id} paintingObj={painting} />
+        ))}
       </div>
     </>
   );

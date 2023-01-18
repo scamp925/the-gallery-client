@@ -10,7 +10,8 @@ function ProductCards({ paintingObj }) {
         <Card.Img variant="top" src={paintingObj.imageUrl} />
         <Card.Body>
           <Card.Title>{paintingObj.title}</Card.Title>
-          <Card.Subtitle>{paintingObj.seller.firstName}{paintingObj.seller.lastName}</Card.Subtitle>
+          <Card.Subtitle>artist</Card.Subtitle>
+          {/* <Card.Subtitle>{paintingObj.seller.firstName}{paintingObj.seller.lastName}</Card.Subtitle> */}
           <Link passHref href="/">More Details</Link>
         </Card.Body>
       </Card>
