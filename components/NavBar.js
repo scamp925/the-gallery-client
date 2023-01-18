@@ -25,7 +25,7 @@ export default function NavBar() {
             {user && (
               <>
                 <NavDropdown title="My Account" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+                  <NavDropdown.Item href={`users/${user.id}`}>Profile</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Order History</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={signOut}>Log Out</NavDropdown.Item>
