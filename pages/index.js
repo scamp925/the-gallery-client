@@ -1,26 +1,36 @@
-import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
+/* eslint-disable react/no-unescaped-entities */
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import ProductCards from '../components/cards/ProductCards';
+import GalleryLogo from '../components/GalleryLogo';
+import NavBar from '../components/NavBar';
+import { getAllProducts } from '../utils/data/productData';
 
 function Home() {
-  const { user } = useAuth();
+  const [paintings, setPaintings] = useState([]);
+
+  const getAllPaintings = () => {
+    getAllProducts().then(setPaintings);
+  };
+
+  useEffect(() => {
+    getAllPaintings();
+  }, []);
+
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.fbUser.displayName}! </h1>
-      <p>Your Bio: {user.bio}</p>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
-    </div>
+    <>
+      <NavBar />
+      <GalleryLogo />
+      <section>
+        <Image src="/the-gallery.jpg" alt="Abstract Painting" width="2000" height="400" />
+      </section>
+      <div>
+        <h3>What's selling?</h3>
+        {paintings?.map((painting) => (
+          <ProductCards key={painting.id} paintingObj={painting} />
+        ))}
+      </div>
+    </>
   );
 }
 

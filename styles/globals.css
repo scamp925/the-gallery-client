@@ -1,11 +1,10 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -18,5 +17,20 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #FAF9F6;
+}
+
+.gallery_logo {
+  border: solid 5px;
+  margin: auto;
+  width: 42%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: 'Limelight', cursive;
+  font-size: 64px;
+  padding-top: 10px;
+  text-align: center;
 }
