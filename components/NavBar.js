@@ -13,7 +13,7 @@ import { useAuth } from '../utils/context/authContext';
 export default function NavBar() {
   const { user } = useAuth();
   return (
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -21,7 +21,7 @@ export default function NavBar() {
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             {user && (
               <>
-                <NavDropdown title="Account" id="basic-nav-dropdown">
+                <NavDropdown title="My Account" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Order History</NavDropdown.Item>
                   <NavDropdown.Divider />
