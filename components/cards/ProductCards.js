@@ -10,8 +10,7 @@ function ProductCards({ paintingObj }) {
         <Card.Img variant="top" src={paintingObj.image_url} />
         <Card.Body>
           <Card.Title>{paintingObj.title}</Card.Title>
-          <Card.Subtitle>artist</Card.Subtitle>
-          {/* <Card.Subtitle>{paintingObj.seller.firstName}{paintingObj.seller.lastName}</Card.Subtitle> */}
+          <Card.Subtitle>{paintingObj.seller.first_name} {paintingObj.seller.last_name}</Card.Subtitle>
           <Link passHref href="/">More Details</Link>
         </Card.Body>
       </Card>
@@ -24,8 +23,8 @@ ProductCards.propTypes = {
     image_url: PropTypes.string,
     title: PropTypes.string,
     seller: PropTypes.shape({
-      firstName: PropTypes.string,
-      lastName: PropTypes.string,
+      first_name: PropTypes.string,
+      last_name: PropTypes.string,
     }).isRequired,
   }).isRequired,
 };
