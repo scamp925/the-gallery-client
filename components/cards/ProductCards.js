@@ -11,7 +11,8 @@ function ProductCards({ paintingObj }) {
         <Card.Body>
           <Card.Title>{paintingObj.title}</Card.Title>
           <Card.Subtitle>{paintingObj.seller.first_name} {paintingObj.seller.last_name}</Card.Subtitle>
-          <Link passHref href="/">More Details</Link>
+          <hr />
+          <Link passHref href={`/products/${paintingObj.id}`}>More Details</Link>
         </Card.Body>
       </Card>
     </div>
@@ -20,6 +21,7 @@ function ProductCards({ paintingObj }) {
 
 ProductCards.propTypes = {
   paintingObj: PropTypes.shape({
+    id: PropTypes.number,
     image_url: PropTypes.string,
     title: PropTypes.string,
     seller: PropTypes.shape({
