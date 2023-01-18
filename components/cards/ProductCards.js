@@ -11,6 +11,7 @@ function ProductCards({ paintingObj }) {
         <Card.Body>
           <Card.Title>{paintingObj.title}</Card.Title>
           <Card.Subtitle>{paintingObj.seller.first_name} {paintingObj.seller.last_name}</Card.Subtitle>
+          <hr />
           <Link passHref href={`/products/${paintingObj.id}`}>More Details</Link>
         </Card.Body>
       </Card>
