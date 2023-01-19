@@ -27,7 +27,7 @@ ProductCards.propTypes = {
     seller: PropTypes.shape({
       first_name: PropTypes.string,
       last_name: PropTypes.string,
-    }).isRequired,
+    }),
   }).isRequired,
 };
 

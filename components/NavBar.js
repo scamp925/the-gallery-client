@@ -34,7 +34,7 @@ export default function NavBar() {
             )}
             {!user && (
             <>
-              <Link passHref href="/">
+              <Link passHref href="/register">
                 <Nav.Link onClick={signIn}>Register</Nav.Link>
               </Link>
               <Navbar.Text>|</Navbar.Text>
