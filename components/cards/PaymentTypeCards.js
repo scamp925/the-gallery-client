@@ -5,11 +5,11 @@ import Button from 'react-bootstrap/Button';
 
 function PaymentTypeCards({ paymentObj }) {
   return (
-    <div>
+    <div className="payment-container">
       <p>{paymentObj.label}</p>
       <p>{paymentObj.account_number}</p>
       <div>
-        <Link href={`/recipes/edit/${paymentObj.id}`} passHref>
+        <Link href={`users/paymentTypes/edit/${paymentObj.id}`} passHref>
           <Button variant="info" className="edit-btn">Edit</Button>
         </Link>
         <Button variant="danger" className="delete-btn">Delete</Button>

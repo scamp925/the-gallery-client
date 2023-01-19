@@ -2,9 +2,9 @@ import { clientCredentials } from '../client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-// GET ALL PAYMENT TYPES
-const getAllPaymentTypes = () => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/paymenttypes`)
+// GET ALL USER PAYMENT TYPES
+const getUserPaymentTypes = (userId) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/paymenttypes?user=${userId}`)
     .then((response) => response.json())
     .then(resolve)
     .catch(reject);
@@ -74,7 +74,7 @@ const deletePaymentType = (id) => new Promise((resolve, reject) => {
 });
 
 export {
-  getAllPaymentTypes,
+  getUserPaymentTypes,
   getSinglePaymentType,
   createPaymentType,
   updatePaymentType,
