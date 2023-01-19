@@ -40,13 +40,13 @@ export default function Profile() {
         <ProfileCard userProfileObj={userProfile} />
       </section>
       <section>
-        <h5>Manage Payments</h5>
+        <h5 className="manage-payments-title">Manage Payments</h5>
         {paymentTypes?.map((paymentType) => (
           <PaymentTypeCards key={paymentType.id} paymentObj={paymentType} />
         ))}
       </section>
       <Link href="/" passHref>
-        <Button variant="success">Add Payment Method</Button>
+        <Button variant="success" className="new-payment-btn">Add Payment Method</Button>
       </Link>
     </div>
 
