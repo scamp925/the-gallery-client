@@ -45,7 +45,7 @@ export default function Profile() {
           <PaymentTypeCards key={paymentType.id} paymentObj={paymentType} />
         ))}
       </section>
-      <Link href="/" passHref>
+      <Link href="/paymentTypes/new" passHref>
         <Button variant="success" className="new-payment-btn">Add Payment Method</Button>
       </Link>
     </div>

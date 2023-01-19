@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useRouter } from 'next/router';
-import { registerUser } from '../utils/auth'; // Update with path to registerUser
-import GalleryLogo from './GalleryLogo';
+import { registerUser } from '../../utils/auth'; // Update with path to registerUser
+import GalleryLogo from '../GalleryLogo';
 
 function RegisterForm({ user, updateUser }) {
   const [firstName, lastName] = user.fbUser.displayName.split(' ');

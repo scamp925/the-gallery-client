@@ -30,7 +30,7 @@ const createPaymentType = (user, paymentType) => new Promise((resolve, reject) =
   const paymentTypeObj = {
     label: paymentType.label,
     account_number: Number(paymentType.accountNumber),
-    customer: Number(paymentType.customer.id),
+    customer_id: user.id,
   };
   fetch(`${clientCredentials.databaseURL}/paymenttypes`, {
     method: 'POST',
