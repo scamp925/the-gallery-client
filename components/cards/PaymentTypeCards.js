@@ -9,7 +9,7 @@ function PaymentTypeCards({ paymentObj }) {
       <p>{paymentObj.label}</p>
       <p>{paymentObj.account_number}</p>
       <div>
-        <Link href={`users/paymentTypes/edit/${paymentObj.id}`} passHref>
+        <Link href={`/paymentTypes/edit/${paymentObj.id}`} passHref>
           <Button variant="info" className="edit-btn">Edit</Button>
         </Link>
         <Button variant="danger" className="delete-btn">Delete</Button>
