@@ -11,8 +11,8 @@ const getUserPaymentTypes = (userId) => new Promise((resolve, reject) => {
 });
 
 // GET SINGLE PAYMENT TYPE
-const getSinglePaymentType = (productId) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/products/${productId}`)
+const getSinglePaymentType = (paymentTypeId) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/paymenttypes/${paymentTypeId}`)
     .then((response) => response.json())
     .then((data) => {
       resolve({
@@ -45,7 +45,7 @@ const createPaymentType = (user, paymentType) => new Promise((resolve, reject) =
 });
 
 // UPDATE SINGLE PAYMENT TYPE
-const updatePaymentType = (user, paymentType, id) => new Promise((resolve, reject) => {
+const updatePaymentType = (paymentType, id) => new Promise((resolve, reject) => {
   const paymentTypeObj = {
     label: paymentType.label,
     account_number: Number(paymentType.accountNumber),

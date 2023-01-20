@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { createPaymentType } from '../../utils/data/paymentTypeData';
+import { createPaymentType, updatePaymentType } from '../../utils/data/paymentTypeData';
 
-function PaymentMethodForm() {
+function PaymentMethodForm({ paymentObj }) {
   const [formInput, setFormInput] = useState({
     label: '',
     accountNumber: '',
@@ -12,6 +13,10 @@ function PaymentMethodForm() {
   });
   const { user } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (paymentObj?.id) setFormInput(paymentObj);
+  }, [paymentObj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,9 +28,13 @@ function PaymentMethodForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createPaymentType(user, formInput).then(() => {
-      router.replace(`/users/${user.id}`);
-    });
+    if (paymentObj?.id) {
+      updatePaymentType(formInput, paymentObj.id).then(() => router.push(`/users/${user.id}`));
+    } else {
+      createPaymentType(user, formInput).then(() => {
+        router.replace(`/users/${user.id}`);
+      });
+    }
   };
 
   return (
@@ -45,5 +54,20 @@ function PaymentMethodForm() {
     </Form>
   );
 }
+
+PaymentMethodForm.propTypes = {
+  paymentObj: PropTypes.shape({
+    id: PropTypes.number,
+    label: PropTypes.string,
+    account_number: PropTypes.number,
+    customer: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
+};
+
+PaymentMethodForm.defaultProps = {
+  paymentObj: {},
+};
 
 export default PaymentMethodForm;
