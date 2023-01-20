@@ -42,7 +42,7 @@ export default function Profile() {
       <section>
         <h5 className="manage-payments-title">Manage Payments</h5>
         {paymentTypes?.map((paymentType) => (
-          <PaymentTypeCards key={paymentType.id} paymentObj={paymentType} />
+          <PaymentTypeCards key={paymentType.id} paymentObj={paymentType} onUpdate={getAllUserPaymentTypes} />
         ))}
       </section>
       <Link href="/paymentTypes/new" passHref>
