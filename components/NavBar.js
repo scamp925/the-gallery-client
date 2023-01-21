@@ -45,7 +45,7 @@ export default function NavBar() {
             </>
             )}
             <Link passHref href="/">
-              <Nav.Link><FaShoppingCart size={30} /></Nav.Link>
+              <Nav.Link><FaShoppingCart size={26} /></Nav.Link>
             </Link>
           </Nav>
         </Navbar.Collapse>
