@@ -44,7 +44,7 @@ export default function NavBar() {
               </Link>
             </>
             )}
-            <Link passHref href="/cart/">
+            <Link passHref href="/cart">
               <Nav.Link><FaShoppingCart size={26} /></Nav.Link>
             </Link>
           </Nav>
