@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Image from 'react-bootstrap/Image';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
@@ -13,7 +14,9 @@ function SingleProductCard({ paintingObj }) {
         <h4>{paintingObj.title}</h4>
         <h5>{paintingObj.seller?.first_name} {paintingObj.seller?.last_name}</h5>
         <h4>${paintingObj.price}</h4>
-        <Button variant="outline-success">Add to Cart</Button>
+        <Link passHref href="/cart">
+          <Button variant="outline-success">Add to Cart</Button>
+        </Link>
       </section>
       <section className="single-product-description">
         <p>{paintingObj.description}</p>

@@ -7,7 +7,7 @@ function ProductCards({ paintingObj }) {
   return (
     <div>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={paintingObj.image_url} />
+        <Card.Img variant="top" src={paintingObj.image_url} alt={paintingObj.title} />
         <Card.Body>
           <Card.Title>{paintingObj.title}</Card.Title>
           <Card.Subtitle>{paintingObj.seller.first_name} {paintingObj.seller.last_name}</Card.Subtitle>

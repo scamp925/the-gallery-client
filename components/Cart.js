@@ -19,7 +19,7 @@ const inititalState = {
 function Cart({ cartItems }) {
   return (
     <main className="block col-2">
-      <h2>Cart Items</h2>
+      <h2>My Cart</h2>
       <div className="row">
         {cartItems.length === 0 && <div>Cart Is Empty</div>}
       </div>
