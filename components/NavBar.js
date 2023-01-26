@@ -7,6 +7,7 @@ import {
   Nav,
   NavDropdown,
 } from 'react-bootstrap';
+import { FaShoppingCart } from 'react-icons/fa';
 import { signIn, signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
@@ -43,6 +44,9 @@ export default function NavBar() {
               </Link>
             </>
             )}
+            <Link passHref href="/cart">
+              <Nav.Link><FaShoppingCart size={26} /></Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
