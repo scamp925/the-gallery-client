@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import GalleryLogo from '../../components/GalleryLogo';
 import NavBar from '../../components/NavBar';
 import Cart from '../../components/Cart';
-import { getAllProducts } from '../../utils/data/productData';
+import { CartContext } from '../../components/CartProvider';
 
 export default function CartView() {
-  const [cartItems, setCartItems] = useState([]);
-
-  const productsInCart = () => {
-    getAllProducts().then(setCartItems);
-  };
-
-  useEffect(() => {
-    productsInCart();
-  }, []);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <div>
