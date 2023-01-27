@@ -13,7 +13,7 @@ function SingleProductCard({ paintingObj }) {
   const handleClick = () => {
     setCartItemIds([...cartItemIds, paintingObj.id]);
     setCartItems([...cartItems, {
-      id: paintingObj.id, imageUrl: paintingObj.imageUrl, title: paintingObj.title, price: paintingObj.price, sellerFirstName: paintingObj.seller?.first_name, sellerLastName: paintingObj.seller?.last_name, quantity: paintingObj.quantity,
+      id: paintingObj.id, imageUrl: paintingObj.imageUrl, title: paintingObj.title, price: paintingObj.price, sellerFirstName: paintingObj.seller.first_name, sellerLastName: paintingObj.seller.last_name, quantity: paintingObj.quantity,
     }]);
   };
 
