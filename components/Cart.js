@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import { CartContext } from './CartProvider';
 
 function Cart({ cartItems }) {
+  const { setCartItems } = useContext(CartContext);
+
+  const onRemove = (id) => {
+    setCartItems((paintings) => paintings.filter((painting) => painting.id !== id));
+  };
+
   return (
     <main className="block col-2">
       <h2>My Cart</h2>
@@ -22,7 +29,7 @@ function Cart({ cartItems }) {
             <p>Quantity: {painting.quantity}</p>
           </div>
           <div>
-            <Button variant="outline-success">+</Button>
+            <Button variant="danger" onClick={() => onRemove(painting.id)}>Remove from Cart</Button>
           </div>
         </div>
       ))}
@@ -33,6 +40,7 @@ function Cart({ cartItems }) {
 Cart.propTypes = {
   cartItems: PropTypes.arrayOf(PropTypes.shape({
     paintingObj: PropTypes.shape({
+      id: PropTypes.number,
       title: PropTypes.string,
       image_url: PropTypes.string,
       price: PropTypes.string,

@@ -10,7 +10,7 @@ function SingleProductCard({ paintingObj }) {
     cartItems, setCartItems, cartItemIds, setCartItemIds,
   } = useContext(CartContext);
 
-  const handleClick = () => {
+  const onAdd = () => {
     setCartItemIds([...cartItemIds, paintingObj.id]);
     setCartItems([...cartItems, {
       id: paintingObj.id, imageUrl: paintingObj.imageUrl, title: paintingObj.title, price: paintingObj.price, sellerFirstName: paintingObj.seller.first_name, sellerLastName: paintingObj.seller.last_name, quantity: paintingObj.quantity,
@@ -27,7 +27,7 @@ function SingleProductCard({ paintingObj }) {
         <h5>{paintingObj.seller?.first_name} {paintingObj.seller?.last_name}</h5>
         <h4>${paintingObj.price}</h4>
         <Link passHref href="/cart">
-          <Button onClick={handleClick} variant="outline-success">Add to Cart</Button>
+          <Button onClick={onAdd} variant="outline-success">Add to Cart</Button>
         </Link>
       </section>
       <section className="single-product-description">
