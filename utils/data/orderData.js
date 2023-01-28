@@ -4,7 +4,7 @@ const dbUrl = clientCredentials.databaseURL;
 
 // GET ALL USER'S CLOSED ORDERS
 const getUserClosedOrders = (userId) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/order?user=${userId}&closed=true`)
+  fetch(`${dbUrl}/orders?user=${userId}&closed=true`)
     .then((response) => response.json())
     .then(resolve)
     .catch(reject);
