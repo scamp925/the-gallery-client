@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Button, Form } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
@@ -47,32 +48,41 @@ function PlaceOrderForm({ cartItemIds, cartItems }) {
     <aside className="col-2">
       <h3>Total: ${total.toFixed(2)}</h3>
       <Form onSubmit={handleSubmit} id={total}>
-        <Form.Group className="mb-3">
-          <Form.Label>Select Payment Method</Form.Label>
-          <Form.Select
-            name="paymentTypeId"
-            onChange={handleChange}
-            className="mb-3"
-            value={formInput.paymentTypeId?.id}
-            required
-          >
-            <option value="">Select...</option>
-            {
-              paymentTypes.map((paymentType) => (
-                <option
-                  defaultValue={paymentType.id === formInput.paymentTypeId}
-                  key={paymentType.id}
-                  value={paymentType.id}
-                >
-                  {paymentType.label}
-                </option>
-              ))
-            }
-          </Form.Select>
-        </Form.Group>
-        <Button variant="warning" type="submit">
-          Place Order
-        </Button>
+        {paymentTypes ? (
+          <>
+            <Form.Group className="mb-3">
+              <Form.Label>Select Payment Method</Form.Label>
+              <Form.Select
+                name="paymentTypeId"
+                onChange={handleChange}
+                className="mb-3"
+                value={formInput.paymentTypeId?.id}
+                required
+              >
+                <option value="">Select...</option>
+                {paymentTypes.map((paymentType) => (
+                  <option
+                    defaultValue={paymentType.id === formInput.paymentTypeId}
+                    key={paymentType.id}
+                    value={paymentType.id}
+                  >
+                    {paymentType.label}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <Button variant="warning" type="submit">
+              Place Order
+            </Button>
+          </>
+        ) : (
+          <>
+            <p>Please Add Payment Method</p>
+            <Link href={`/users/${user.id}`} passHref>
+              <Button variant="success">Add</Button>
+            </Link>
+          </>
+        )}
       </Form>
     </aside>
   );
