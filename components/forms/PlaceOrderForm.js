@@ -6,9 +6,8 @@ import { useAuth } from '../../utils/context/authContext';
 import { getUserPaymentTypes } from '../../utils/data/paymentTypeData';
 import { createOrder } from '../../utils/data/orderData';
 
-function PlaceOrderForm({ cartItemIds }) {
+function PlaceOrderForm({ cartItemIds, cartItems }) {
   const [formInput, setFormInput] = useState({
-    total: '',
     customerId: 0,
     paymentType: {
       id: 0,
@@ -17,6 +16,12 @@ function PlaceOrderForm({ cartItemIds }) {
     },
     associatedProductIds: cartItemIds,
   });
+  let total = 0;
+  if (cartItems.length) {
+    cartItems.forEach((painting) => {
+      total += Number(painting.price);
+    });
+  }
   const [paymentTypes, setPaymentTypes] = useState([]);
   const { user } = useAuth();
   const router = useRouter();
@@ -42,11 +47,8 @@ function PlaceOrderForm({ cartItemIds }) {
 
   return (
     <aside className="col-2">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label>Total: $</Form.Label>
-          <Form.Control name="label" required value={formInput.total} onChange={handleChange} />
-        </Form.Group>
+      <h3>Total: ${total.toFixed(2)}</h3>
+      <Form onSubmit={handleSubmit} id={total}>
         <Form.Group className="mb-3">
           <Form.Label>Select Payment Method</Form.Label>
           <Form.Select
@@ -81,6 +83,20 @@ function PlaceOrderForm({ cartItemIds }) {
 PlaceOrderForm.propTypes = {
   cartItemIds: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
+  })).isRequired,
+  cartItems: PropTypes.arrayOf(PropTypes.shape({
+    paintingObj: PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      image_url: PropTypes.string,
+      price: PropTypes.string,
+      quantity: PropTypes.number,
+      seller: PropTypes.shape({
+        id: PropTypes.number,
+        firstName: PropTypes.string,
+        lastName: PropTypes.string,
+      }),
+    }),
   })).isRequired,
   orderObj: PropTypes.shape({
     id: PropTypes.number,

@@ -13,7 +13,7 @@ export default function CartView() {
       <NavBar />
       <GalleryLogo />
       <Cart cartItems={cartItems} />
-      <PlaceOrderForm cartItemIds={cartItemIds} />
+      <PlaceOrderForm cartItemIds={cartItemIds} cartItems={cartItems} />
     </div>
   );
 }
