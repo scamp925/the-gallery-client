@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import PaymentTypeCards from '../../components/cards/PaymentTypeCards';
 import ProfileCard from '../../components/cards/ProfileCard';
 import GalleryLogo from '../../components/GalleryLogo';
-import NavBar from '../../components/NavBar';
 import { useAuth } from '../../utils/context/authContext';
 
 import getSingleUser from '../../utils/data/userData';
@@ -34,7 +33,6 @@ export default function Profile() {
 
   return (
     <div>
-      <NavBar />
       <GalleryLogo />
       <section>
         <ProfileCard userProfileObj={userProfile} />
