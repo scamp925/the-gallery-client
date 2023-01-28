@@ -58,7 +58,7 @@ export default function NavBar() {
               <Link passHref href="/">
                 <Nav.Link>All Paintings</Nav.Link>
               </Link>
-              <Link passHref href="/register">
+              <Link passHref href="/">
                 <Nav.Link onClick={signIn}>Register</Nav.Link>
               </Link>
               <Navbar.Text>|</Navbar.Text>
