@@ -78,7 +78,7 @@ function PlaceOrderForm({ cartItemIds, cartItems }) {
         ) : (
           <>
             <p>Please Add Payment Method</p>
-            <Link href={`/users/${user.id}`} passHref>
+            <Link href="/paymentTypes/new" passHref>
               <Button variant="success">Add</Button>
             </Link>
           </>
