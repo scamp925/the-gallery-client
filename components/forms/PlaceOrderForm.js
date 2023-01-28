@@ -9,7 +9,7 @@ import { createOrder } from '../../utils/data/orderData';
 function PlaceOrderForm({ cartItemIds, cartItems }) {
   const [formInput, setFormInput] = useState({
     customerId: 0,
-    paymentType: {
+    paymentTypeId: {
       id: 0,
       label: '',
       accountNumber: 0,
@@ -40,7 +40,7 @@ function PlaceOrderForm({ cartItemIds, cartItems }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createOrder(user, cartItemIds, formInput).then(() => {
+    createOrder(user, cartItemIds, total, formInput.paymentTypeId.id).then(() => {
       router.replace(`/users/${user.id}`);
     });
   };
@@ -81,9 +81,7 @@ function PlaceOrderForm({ cartItemIds, cartItems }) {
 }
 
 PlaceOrderForm.propTypes = {
-  cartItemIds: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-  })).isRequired,
+  cartItemIds: PropTypes.arrayOf(PropTypes.number).isRequired,
   cartItems: PropTypes.arrayOf(PropTypes.shape({
     paintingObj: PropTypes.shape({
       id: PropTypes.number,
@@ -98,25 +96,25 @@ PlaceOrderForm.propTypes = {
       }),
     }),
   })).isRequired,
-  orderObj: PropTypes.shape({
-    id: PropTypes.number,
-    total: PropTypes.number,
-    customerId: PropTypes.shape({
-      id: PropTypes.number,
-    }),
-    paymentTypeId: PropTypes.shape({
-      id: PropTypes.number,
-      label: PropTypes.string,
-      accountNumber: PropTypes.number,
-    }),
-    associatedProductIds: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number,
-    })),
-  }),
+//   orderObj: PropTypes.shape({
+//     id: PropTypes.number,
+//     total: PropTypes.number,
+//     customerId: PropTypes.shape({
+//       id: PropTypes.number,
+//     }),
+//     paymentTypeId: PropTypes.shape({
+//       id: PropTypes.number,
+//       label: PropTypes.string,
+//       accountNumber: PropTypes.number,
+//     }),
+//     associatedProductIds: PropTypes.arrayOf(PropTypes.shape({
+//       id: PropTypes.number,
+//     })),
+//   }),
 };
 
-PlaceOrderForm.defaultProps = {
-  orderObj: {},
-};
+// PlaceOrderForm.defaultProps = {
+//   orderObj: {},
+// };
 
 export default PlaceOrderForm;
