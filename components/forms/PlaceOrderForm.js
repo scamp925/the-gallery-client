@@ -8,13 +8,11 @@ import { createOrder } from '../../utils/data/orderData';
 
 function PlaceOrderForm({ cartItemIds, cartItems }) {
   const [formInput, setFormInput] = useState({
-    customerId: 0,
     paymentTypeId: {
       id: 0,
       label: '',
       accountNumber: 0,
     },
-    associatedProductIds: cartItemIds,
   });
   let total = 0;
   if (cartItems.length) {
@@ -40,7 +38,7 @@ function PlaceOrderForm({ cartItemIds, cartItems }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createOrder(user, cartItemIds, total, formInput.paymentTypeId.id).then(() => {
+    createOrder(user, cartItemIds, total, formInput).then(() => {
       router.replace(`/users/${user.id}`);
     });
   };
@@ -96,25 +94,6 @@ PlaceOrderForm.propTypes = {
       }),
     }),
   })).isRequired,
-//   orderObj: PropTypes.shape({
-//     id: PropTypes.number,
-//     total: PropTypes.number,
-//     customerId: PropTypes.shape({
-//       id: PropTypes.number,
-//     }),
-//     paymentTypeId: PropTypes.shape({
-//       id: PropTypes.number,
-//       label: PropTypes.string,
-//       accountNumber: PropTypes.number,
-//     }),
-//     associatedProductIds: PropTypes.arrayOf(PropTypes.shape({
-//       id: PropTypes.number,
-//     })),
-//   }),
 };
-
-// PlaceOrderForm.defaultProps = {
-//   orderObj: {},
-// };
 
 export default PlaceOrderForm;

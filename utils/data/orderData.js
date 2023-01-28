@@ -11,11 +11,11 @@ const getUserClosedOrders = (userId) => new Promise((resolve, reject) => {
 });
 
 // CREATE ORDER
-const createOrder = (user, cartIds, total, paymentTypeId) => new Promise((resolve, reject) => {
+const createOrder = (user, cartIds, total, order) => new Promise((resolve, reject) => {
   const orderObj = {
     total_cost: Number(total),
     customer_id: user.id,
-    payment_type_id: Number(paymentTypeId),
+    payment_type_id: Number(order.paymentTypeId),
     associated_product_ids: cartIds,
   };
   fetch(`${clientCredentials.databaseURL}/orders`, {
