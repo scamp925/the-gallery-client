@@ -26,10 +26,16 @@ export default function NavBar() {
             {user && (
               <>
                 <NavDropdown title="My Account" id="basic-nav-dropdown">
-                  <NavDropdown.Item href={`users/${user.id}`}>Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Order History</NavDropdown.Item>
+                  <Link passHref href={`users/${user.id}`}>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </Link>
+                  <Link passHref href="/orderHistory">
+                    <NavDropdown.Item>Order History</NavDropdown.Item>
+                  </Link>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={signOut}>Log Out</NavDropdown.Item>
+                  <Link passHref href="/">
+                    <NavDropdown.Item onClick={signOut}>Log Out</NavDropdown.Item>
+                  </Link>
                 </NavDropdown>
               </>
             )}
