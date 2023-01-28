@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import ClosedOrderCards from '../../components/cards/ClosedOrderCards';
 import { useAuth } from '../../utils/context/authContext';
@@ -12,7 +13,7 @@ export default function OrderHistory() {
 
   useEffect(() => {
     getClosedOrder();
-  }, []);
+  }, [user]);
 
   return (
     <div>
