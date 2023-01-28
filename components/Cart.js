@@ -5,10 +5,11 @@ import Button from 'react-bootstrap/Button';
 import { CartContext } from './CartProvider';
 
 function Cart({ cartItems }) {
-  const { setCartItems } = useContext(CartContext);
+  const { setCartItemIds, setCartItems } = useContext(CartContext);
 
   const onRemove = (id) => {
     setCartItems((paintings) => paintings.filter((painting) => painting.id !== id));
+    setCartItemIds((paintingIds) => paintingIds.filter((paintingId) => paintingId !== id));
   };
 
   return (

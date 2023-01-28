@@ -49,7 +49,7 @@ function PaymentMethodForm({ paymentObj }) {
         Cancel
       </Button>
       <Button variant="success" type="submit">
-        Submit
+        {paymentObj?.id ? 'Update' : 'Submit'}
       </Button>
     </Form>
   );
@@ -59,7 +59,7 @@ PaymentMethodForm.propTypes = {
   paymentObj: PropTypes.shape({
     id: PropTypes.number,
     label: PropTypes.string,
-    account_number: PropTypes.number,
+    accountNumber: PropTypes.number,
     customer: PropTypes.shape({
       id: PropTypes.number,
     }),
